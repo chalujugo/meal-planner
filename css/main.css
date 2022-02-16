@@ -1,27 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo&family=Poppins&family=Roboto:wght@300&display=swap');
+
 :root {
-  --ff-primary: "Source Sans Pro", sans-serif;
-  --ff-secondary: "Source Code Pro", monospace;
+  --ff-primary: 'Poppins', sans-serif;
+  --ff-secondary: 'Roboto', sans-serif;
   --fw-reg: 300;
   --fw-bold: 900;
-  --clr-bg: rgb(47, 47, 47);
+  --clr-bg: #fff5f4;
   --clr-text: #252525;
-  --clr-accent: #fbbdc4;
-  --clr-bg-secondary: #ecedf6;
+  --clr-accent: #e05f5f;
+  --clr-accent-secondary: #FF9F33;
+  --clr-bg-secondary: #f4f1de;
+  --clr-button: #202020;
   --fs-h1: 3rem;
   --fs-h2: 2.25rem;
   --fs-h3: 1.25rem;
   --fs-body: 1rem;
 }
 
+[contentEditable=true]:empty:not(:focus):before{
+  content:attr(data-text);
+  opacity:0.8;
+}
+
 html {
-  height: 100%;
+  height: 100vh;
   width: 100vw;
   scroll-behavior: smooth;
+  overflow: auto;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background: "black";
+  color: var(--clr-text) !important;
+  margin: 0;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-body);
+  line-height: 1.6;
 }
 
 .kanban {
+  height: 100vh;
+  width: auto;
   display: flex;
-  padding: 30px;
   background-color: var(--clr-bg);
   border-radius: 3px;
 }
@@ -31,11 +53,13 @@ html {
 }
 
 .kanban__column {
+  padding:30px 20px;
   flex: 1;
 }
 
 .kanban__column:not(:last-child) {
-  margin-right: 30px;
+  margin-left:5px;
+  
 }
 
 .kanban__column-title {
@@ -46,12 +70,17 @@ html {
 }
 
 .kanban__item-input {
+  width: 100%;
   padding: 15px;
+  font-family: var(--ff-secondary) !important;
   box-sizing: border-box;
   margin-bottom: 10px;
-  background: var(--clr-bg-secondary);
+  background: var(--clr-bg);
+  border: 2px solid rgb(81, 78, 78);
   border-radius: 5px;
   cursor: pointer;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .kanban__dropzone {
@@ -64,13 +93,41 @@ html {
   background: var(--clr-accent);
 }
 
+
 .kanban__add-item {
   width: 100%;
   padding: 10px 0px;
   font-size: 15px;
-  color: var(--clr-text);
-  background: var(--clr-accent);
+  color: var(--clr-bg);
+  background: var(--clr-button);
   border-radius: 5px;
   border: none;
   cursor: pointer;
+}
+
+.delete-button {
+  margin-top:-5px;
+  margin-left:-6px;
+  position:absolute;
+  text-align:center;
+  width:10px;
+  padding:3px 6px;
+  font-size: 10px;
+  color:var(--clr-bg);
+  border-radius: 50px;
+  background-color:var(--clr-button);
+  cursor: pointer;
+}
+
+
+.meal-tag {
+  margin-left:auto;
+  float:right;
+  font-size:10px;
+  padding:3px 5px;
+  margin-top:-40px;
+  border-radius: 50px;
+  margin-right:5px;
+  background-color:var(--clr-accent-secondary);
+  color:var(--clr-bg);
 }

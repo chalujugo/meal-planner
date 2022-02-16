@@ -28,29 +28,35 @@ export default class KanbanAPI {
   static updateItem(itemId, newProperties) {
     const data = read();
     const [item, currentColumn] = (() => {
-      for (const col of data) {
-        const item = col.items.find((item) => item.id == itemId);
+      for (const column of data) {
+        const item = column.items.find((item) => item.id == itemId);
         if (item) {
-          return [item, col];
+          return [item, column];
         }
       }
     })();
 
     if (!item) {
-      item.content =
-        newProperties.content === undefined
-          ? item.content
-          : newProperties.content;
+      throw new Error("Item does not exist");
+    }
+    item.content =
+      newProperties.content === undefined
+        ? item.content
+        : newProperties.content;
 
-      // update column and col position
-      if (
-        newProperties.columnId != undefined &&
-        newProperties.position != undefined
-      ) {
-        const targetCol = data.find(
-          (column) => column.id == newProperties.columnId
-        );
+    // update column and col position
+    if (
+      newProperties.columnId != undefined &&
+      newProperties.position != undefined
+    ) {
+      const targetCol = data.find(
+        (column) => column.id == newProperties.columnId
+      );
+
+      if(!targetCol) {
+        throw new Error("Column does not exist");
       }
+    
 
       // delete item from its current column
       // removes one item from index, effectively deleting the item from its current  column
@@ -62,6 +68,7 @@ export default class KanbanAPI {
 
     save(data);
   }
+
 
   static deleteItem(itemId) {
     const data = read();
