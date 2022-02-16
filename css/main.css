@@ -1,0 +1,75 @@
+:root {
+  --ff-primary: "Source Sans Pro", sans-serif;
+  --ff-secondary: "Source Code Pro", monospace;
+  --fw-reg: 300;
+  --fw-bold: 900;
+  --clr-bg: rgb(47, 47, 47);
+  --clr-text: #252525;
+  --clr-accent: #fbbdc4;
+  --clr-bg-secondary: #ecedf6;
+  --fs-h1: 3rem;
+  --fs-h2: 2.25rem;
+  --fs-h3: 1.25rem;
+  --fs-body: 1rem;
+}
+
+html {
+  height: 100%;
+  width: 100vw;
+  scroll-behavior: smooth;
+}
+
+.kanban {
+  display: flex;
+  padding: 30px;
+  background-color: var(--clr-bg);
+  border-radius: 3px;
+}
+
+.kanban * {
+  font-family: var(--ff-primary);
+}
+
+.kanban__column {
+  flex: 1;
+}
+
+.kanban__column:not(:last-child) {
+  margin-right: 30px;
+}
+
+.kanban__column-title {
+  margin-bottom: 20px;
+  font-size: 20px;
+  user-select: none;
+  color: var(--clr-accent);
+}
+
+.kanban__item-input {
+  padding: 15px;
+  box-sizing: border-box;
+  background: var(--clr-bg-secondary);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.kanban__dropzone {
+  height: 10px;
+  transition: background 0.15s, height 0.15s;
+}
+
+.kanban__dropzone--active {
+  height: 20px;
+  background: var(--clr-accent);
+}
+
+.kanban__add-item {
+  width: 100%;
+  padding: 10px 0px;
+  font-size: 15px;
+  color: var(--clr-text);
+  background: var(--clr-accent);
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
