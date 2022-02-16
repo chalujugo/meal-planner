@@ -48,6 +48,7 @@ html {
 .kanban__item-input {
   padding: 15px;
   box-sizing: border-box;
+  margin-bottom: 10px;
   background: var(--clr-bg-secondary);
   border-radius: 5px;
   cursor: pointer;

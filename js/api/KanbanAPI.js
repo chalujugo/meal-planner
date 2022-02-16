@@ -68,7 +68,7 @@ export default class KanbanAPI {
     for (const col of data) {
       const item = col.items.find((item) => item.id == itemId);
       if (item) {
-        col.item.splice(col.items.indexOf(item), 1);
+        col.items.splice(col.items.indexOf(item), 1);
       }
 
       save(data);
