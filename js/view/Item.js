@@ -1,16 +1,22 @@
 import KanbanAPI from "../api/KanbanAPI.js";
 
 export default class Item {
-  constructor(id, content) {
+  constructor(id, content, category) {
     this.elements = {};
     this.elements.root = Item.createRoot();
     this.elements.input = this.elements.root.querySelector(
       ".kanban__item-input"
     );
+    this.elements.secondaryInput = this.elements.root.querySelector(
+      ".meal-tag"
+    )
+
+    this.elements
 
     this.elements.root.dataset.id = id;
     this.elements.input.textContent = content;
-
+    this.elements.secondaryInput.textContent = category;
+    this.category = category;
     this.content = content;
 
     const onBlur = () => {
@@ -24,7 +30,8 @@ export default class Item {
       this.content = newContent;
 
       KanbanAPI.updateItem(id, {
-        content: this.content
+        content: this.content,
+        category: this.category
       });
     };
 
@@ -51,11 +58,24 @@ export default class Item {
     // });
 
 
+    const mealtype = this.elements.root.querySelector(".meal-tag");
+    const saveCategory = () => {
+      let currCategory = mealtype.textContent.trim();
+      this.category = currCategory
 
- 
+      KanbanAPI.updateItem(id, {
+        content: this.content,
+        category: currCategory
+      });
+
+    }
+
+    this.elements.secondaryInput.addEventListener("blur", saveCategory);
+
+
 
     this.elements.root.addEventListener("dragstart", e => {
-			e.dataTransfer.setData("text/plain", id);
+			e.dataTransfer.setData("text/plain", "dcode");
 		});
 
     this.elements.input.addEventListener("drop", e => {
@@ -71,9 +91,13 @@ export default class Item {
                 <div class="kanban__item">
                     <div class="delete-button">x</div>
                 
-                    <div class="kanban__item-input" contenteditable spellcheck="false"></div>
+                    <div class="kanban__item-input" contentEditable=true spellcheck="false"></div>
                
-                    <div class="meal-tag" contentEditable=true data-text="Meal type" spellcheck="false"></div>
+                    <div class="meal-tag" data-text="Meal type" contentEditable=true spellcheck="false">
+                    
+                  </div>
+
+
                 </div>
          `).children[0];
   }

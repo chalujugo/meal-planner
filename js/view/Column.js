@@ -18,7 +18,7 @@ export default class Column {
     this.elements.title.textContent = title;
 
     this.elements.addItem.addEventListener("click", () => {
-      const newItem = KanbanAPI.insertItem(id, "");
+      const newItem = KanbanAPI.insertItem(id, "", "");
       this.renderItem(newItem);
     });
 
@@ -41,7 +41,7 @@ export default class Column {
   }
 
   renderItem(data) {
-    const item = new Item(data.id, data.content);
+    const item = new Item(data.id, data.content, data.category);
 
     this.elements.items.appendChild(item.elements.root);
   }

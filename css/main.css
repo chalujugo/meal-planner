@@ -23,16 +23,16 @@
 }
 
 html {
-  height: 100vh;
+  height: auto;
   width: 100vw;
   scroll-behavior: smooth;
   overflow: auto;
 }
 
 body {
-  height: 100vh;
+  height: auto;
   width: 100vw;
-  background: "black";
+  background-color: var(--clr-bg);
   color: var(--clr-text) !important;
   margin: 0;
   font-family: var(--ff-primary);
@@ -40,11 +40,28 @@ body {
   line-height: 1.6;
 }
 
+h1 {
+  font-size:3em;
+  color:var(--clr-text);
+  font-family: var(--ff-primary);
+}
+
+h3 {
+  margin-top: -30px;
+  font-size:1em;
+  color:var(--clr-accent);
+  font-family: var(--ff-primary);
+}
+
+.container {
+  text-align: center;
+  background-color:none;
+}
+
 .kanban {
-  height: 100vh;
-  width: auto;
+  height: auto !important;
+  width: auto !important;
   display: flex;
-  background-color: var(--clr-bg);
   border-radius: 3px;
 }
 
@@ -72,15 +89,19 @@ body {
 .kanban__item-input {
   width: 100%;
   padding: 15px;
+  font-size:15px;
   font-family: var(--ff-secondary) !important;
   box-sizing: border-box;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   background: var(--clr-bg);
   border: 2px solid rgb(81, 78, 78);
   border-radius: 5px;
   cursor: pointer;
   word-wrap: break-word;
-  word-break: break-all;
+}
+
+.kanban__item-input:focus{
+  outline: none
 }
 
 .kanban__dropzone {
@@ -105,6 +126,17 @@ body {
   cursor: pointer;
 }
 
+.kanban__clear-all {
+  width: auto;
+  padding: 5px 30px;
+  font-size: 12px;
+  color: var(--clr-text);
+  background-color:var(--clr-bg);
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
 .delete-button {
   margin-top:-5px;
   margin-left:-6px;
@@ -119,15 +151,71 @@ body {
   cursor: pointer;
 }
 
+.kanban__item {
+  padding-bottom: 20px !important;
+}
+
 
 .meal-tag {
   margin-left:auto;
   float:right;
   font-size:10px;
-  padding:3px 5px;
-  margin-top:-40px;
+  padding:3px 7px;
+  margin-top:-15px;
   border-radius: 50px;
   margin-right:5px;
   background-color:var(--clr-accent-secondary);
   color:var(--clr-bg);
 }
+
+.meal-tag:focus {
+  outline:none;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  margin-left:auto;
+  float:right;
+  font-size:10px;
+  padding:3px 7px;
+  margin-top:-15px;
+  border-radius: 50px;
+  margin-right:5px;
+  background-color:var(--clr-accent-secondary);
+  color:var(--clr-bg);
+  border:none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--clr-bg);
+  border:1px solid var(--clr-button);
+  min-width: 70px;
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content p {
+  font-size:12px;
+  color: black;
+  text-decoration: none;
+  text-align:center;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content p:hover {background-color: #ddd;cursor:pointer}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color:var(--clr-accent); border:none;}

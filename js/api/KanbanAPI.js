@@ -9,12 +9,13 @@ export default class KanbanAPI {
     return column.items;
   }
 
-  static insertItem(columnId, content) {
+  static insertItem(columnId, content, category) {
     const data = read();
     const column = data.find((column) => column.id == columnId);
     const item = {
       id: Math.floor(Math.random() * 1000000),
       content,
+      category
     };
     if (!column) {
       throw new Error("Column does not exist");
@@ -43,6 +44,11 @@ export default class KanbanAPI {
       newProperties.content === undefined
         ? item.content
         : newProperties.content;
+      
+    item.category = 
+      newProperties.category === undefined
+      ? item.category
+      : newProperties.category;
 
     // update column and col position
     if (
