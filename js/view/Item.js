@@ -51,24 +51,7 @@ export default class Item {
             this.elements.root.parentElement.removeChild(this.elements.root);
 
           }})
-
-    // this.elements.input.addEventListener("blur", onBlur);
-    // this.elements.root.addEventListener("dblclick", () => {
-    //   const tag = prompt("Enter meal category:", "e.g Lunch")
-    // });
-
-
-    // const mealtype = this.elements.root.querySelector(".meal-tag");
-    // const saveCategory = () => {
-    //   let currCategory = mealtype.textContent.trim();
-    //   this.category = currCategory
-
-    //   KanbanAPI.updateItem(id, {
-    //     content: this.content,
-    //     category: currCategory
-    //   });
-
-    // }
+          
 
     const dropdownButton = this.elements.root.querySelector(".dropdown-content");
     const currentTag = this.elements.root.querySelector(".dropbtn")
@@ -83,8 +66,6 @@ export default class Item {
     }
 
     dropdownButton.addEventListener("click", selectCategory)
-
-    //this.elements.secondaryInput.addEventListener("blur", selectCategory);
 
 
 

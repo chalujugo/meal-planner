@@ -155,23 +155,6 @@ h3 {
   padding-bottom: 20px !important;
 }
 
-
-.meal-tag {
-  margin-left:auto;
-  float:right;
-  font-size:10px;
-  padding:3px 7px;
-  margin-top:-15px;
-  border-radius: 50px;
-  margin-right:5px;
-  background-color:var(--clr-accent-secondary);
-  color:var(--clr-bg);
-}
-
-.meal-tag:focus {
-  outline:none;
-}
-
 /* Dropdown Button */
 .dropbtn {
   margin-left:auto;
