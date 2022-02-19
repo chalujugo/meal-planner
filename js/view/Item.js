@@ -8,13 +8,13 @@ export default class Item {
       ".kanban__item-input"
     );
     this.elements.secondaryInput = this.elements.root.querySelector(
-      ".meal-tag"
-    )
-
-    this.elements
+      ".dropbtn"
+    );
 
     this.elements.root.dataset.id = id;
     this.elements.input.textContent = content;
+    
+
     this.elements.secondaryInput.textContent = category;
     this.category = category;
     this.content = content;
@@ -58,19 +58,33 @@ export default class Item {
     // });
 
 
-    const mealtype = this.elements.root.querySelector(".meal-tag");
-    const saveCategory = () => {
-      let currCategory = mealtype.textContent.trim();
-      this.category = currCategory
+    // const mealtype = this.elements.root.querySelector(".meal-tag");
+    // const saveCategory = () => {
+    //   let currCategory = mealtype.textContent.trim();
+    //   this.category = currCategory
 
+    //   KanbanAPI.updateItem(id, {
+    //     content: this.content,
+    //     category: currCategory
+    //   });
+
+    // }
+
+    const dropdownButton = this.elements.root.querySelector(".dropdown-content");
+    const currentTag = this.elements.root.querySelector(".dropbtn")
+    const selectCategory = () => {
+      let selected = document.getSelection().anchorNode.parentNode.innerHTML.toString();
+      currentTag.textContent = selected
+      this.category = selected.trim();
       KanbanAPI.updateItem(id, {
         content: this.content,
-        category: currCategory
+        category: this.category
       });
-
     }
 
-    this.elements.secondaryInput.addEventListener("blur", saveCategory);
+    dropdownButton.addEventListener("click", selectCategory)
+
+    //this.elements.secondaryInput.addEventListener("blur", selectCategory);
 
 
 
@@ -93,11 +107,18 @@ export default class Item {
                 
                     <div class="kanban__item-input" contentEditable=true spellcheck="false"></div>
                
-                    <div class="meal-tag" data-text="Meal type" contentEditable=true spellcheck="false">
-                    
+
+
+                  <div class="dropdown">
+                  <button class="dropbtn"></button>
+                  <div class="dropdown-content">
+                    <p>Breakfast</p>
+                    <p>Brunch</p>
+                    <p>Lunch</p>
+                    <p>Dinner</p>
+                    <p>Snack</p>
                   </div>
-
-
+                </div>
                 </div>
          `).children[0];
   }
